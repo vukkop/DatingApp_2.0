@@ -16,8 +16,9 @@
       </ng-container>
     </ul>
 
-    <div *ngIf="accountService.currentUser$ | async" dropdown class="dropdown">
-      <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Welcome user</a>
+    <div *ngIf="(accountService.currentUser$ | async) as user" dropdown class="dropdown">
+      <a dropdownToggle class="dropdown-toggle text-light text-decoration-none">Welcome {{user.username |
+        titlecase}}</a>
       <div *dropdownMenu class="dropdown-menu">
         <a class="dropdown-item">Edit Profile</a>
         <a (click)="logout()" class="dropdown-item">Logout</a>
