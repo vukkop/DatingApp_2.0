@@ -38,8 +38,13 @@
         <h4>Interests</h4>
         <p>{{member.interests}}</p>
       </tab>
-      <tab heading="Photos">
-        <p>Photos will go here</p>
+      <!--
+        #photoTab="tab" - giving #photoTab type of "tab" so it allows us to use .active,
+        *ngIf=" photoTab.active" loads gallery only when #photoTab is active
+      -->
+      <tab heading="Photos" #photoTab="tab">
+        <gallery *ngIf=" photoTab.active" [items]="images" class="gallery">
+        </gallery>
       </tab>
       <tab heading="Messages">
         <h4>Interests</h4>
