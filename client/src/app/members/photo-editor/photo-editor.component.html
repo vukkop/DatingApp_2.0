@@ -4,7 +4,8 @@
     <div class="text-center">
       <button (click)="setMainPhoto(photo)" [disabled]="photo.isMain"
         [ngClass]="photo.isMain ? 'btn-info ' : 'btn-outline-info'" class="btn btn-sm me-1">Main</button>
-      <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+      <button (click)="deletePhoto(photo.id)" [disabled]="photo.isMain" class="btn btn-sm btn-danger"><i
+          class="fa fa-trash"></i></button>
     </div>
   </div>
 </div>
