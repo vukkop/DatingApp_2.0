@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
@@ -27,8 +28,8 @@ namespace API.Controllers
     [HttpGet]
     public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
     {
-      var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userRepository.GetUserByUsernameAsync(username);
+      // var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
       userParams.CurrentUsername = currentUser.UserName;
 
       if (string.IsNullOrEmpty(userParams.Gender))
