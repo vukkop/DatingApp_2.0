@@ -53,8 +53,7 @@ namespace API.Controllers
     [HttpPut]
     public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
     {
-      var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var user = await _userRepository.GetUserByUsernameAsync(username);
+      var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
       if (user == null) return NotFound();
 
