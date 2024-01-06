@@ -15,7 +15,6 @@ import { MessageService } from 'src/app/_services/message.service';
 export class MemberMessagesComponent {
   @ViewChild('messageForm') messageForm?: NgForm;
   @Input() username?: string;
-  @Input() messages: Message[] = [];
   messageContent = '';
   loading = false;
 
@@ -28,11 +27,8 @@ export class MemberMessagesComponent {
     // this.loading = true;
     this.messageService
       .sendMessage(this.username, this.messageContent)
-      .subscribe({
-        next: (message) => {
-          this.messages.push(message);
-          this.messageForm?.reset();
-        },
+      .then(() => {
+        this.messageForm?.reset();
       });
     // .finally(() => (this.loading = false));
   }
