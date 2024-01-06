@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
 using API.Helpers;
@@ -20,6 +16,6 @@ namespace API.Interfaces
         void RemoveConnection(Connection connection);
         Task<Connection> GetConnection(string connectionId);
         Task<Group> GetMessageGroup(string groupName);
-        // Task<Group> GetGroupForConnection(string connectionId);
+        Task<Group> GetGroupForConnection(string connectionId);
     }
 }
