@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for datingapp-v2 on 2024-01-07T01:00:32-08:00
+# fly.toml app configuration file generated for datingapp-v2 on 2024-01-07T01:54:18-08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -11,8 +11,8 @@ primary_region = "sea"
 
 [env]
   ASPNETCORE_URLS="http://+:8080"
-  CloudinarySettings__CloudName="dtymud2pb"
-  CloudinarySettings__ApiKey="778479228424877"
+  CloudinarySettings__CloudName="dj3wmuy3l"
+  CloudinarySettings__ApiKey="895484589483755"
 
 [http_service]
   internal_port = 8080
