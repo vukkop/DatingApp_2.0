@@ -66,8 +66,8 @@ namespace API.Controllers
     [HttpPost("add-photo")]
     public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
     {
-      var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var user = await _uow.UserRepository.GetUserByUsernameAsync(username);
+
+      var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
       var result = await _photoService.AddPhotoAsync(file);
 
@@ -94,8 +94,7 @@ namespace API.Controllers
     [HttpPut("set-main-photo/{photoId}")]
     public async Task<ActionResult> SetMainPhoto(int photoId)
     {
-      var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var user = await _uow.UserRepository.GetUserByUsernameAsync(username);
+      var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
       if (user == null) return NotFound();
 
@@ -117,8 +116,7 @@ namespace API.Controllers
     [HttpDelete("delete-photo/{photoId}")]
     public async Task<ActionResult> DeletePhoto(int photoId)
     {
-      var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var user = await _uow.UserRepository.GetUserByUsernameAsync(username);
+      var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
       var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
 
