@@ -42,7 +42,11 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'errors', component: TestErrorComponent },
+  {
+    path: 'errors',
+    component: TestErrorComponent,
+    canActivate: [authGuard, adminGuard],
+  },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
